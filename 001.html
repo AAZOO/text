@@ -9,8 +9,8 @@
 </head>
 
 <body>
-  <input type="text" id="firstInput">
-  <input type="text" id="secondInput">
+  <input type="text" id="firstInput" inputmode="text">
+  <input type="text" id="secondInput" inputmode="text">
   <button id="myButton">點擊</button>
 
   <script>
@@ -20,18 +20,12 @@
 
     buttonElement.addEventListener("click", function () {
       firstInputElement.focus();
-      setTimeout(function () {
-        firstInputElement.select();
-        firstInputElement.addEventListener("blur", function () {
-          setTimeout(function () {
-            secondInputElement.focus();
-            setTimeout(function () {
-              secondInputElement.select();
-              secondInputElement.click();
-            }, 100);
-          }, 100);
-        });
-      }, 100);
+      firstInputElement.click();
+    });
+    buttonElement.addEventListener("focusout", function () {
+      secondInputElement.setAttribute('autofocus', 'autofocus');
+      secondInputElement.focus();
+      secondInputElement.click();
     });
   </script>
 </body>
