@@ -22,10 +22,17 @@
       firstInputElement.focus();
       firstInputElement.click();
     });
-    firstInputElement.addEventListener("focusout", function () {
-      secondInputElement.setAttribute('autofocus', '');
-      secondInputElement.focus();
-      secondInputElement.click();
+
+    firstInputElement.addEventListener("input", function () {
+      if (firstInputElement.value.length >= 5) {
+        firstInputElement.blur();
+      }
+    });
+
+    firstInputElement.addEventListener("blur", function () {
+      setTimeout(function () {
+        secondInputElement.focus();
+      }, 0);
     });
   </script>
 </body>
