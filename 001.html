@@ -11,22 +11,28 @@
 <body>
   <input type="text" id="firstInput">
   <input type="text" id="secondInput">
-  <button id="myButton">点击</button>
+  <button id="myButton">點擊</button>
 
+  <script>
+    var buttonElement = document.getElementById("myButton");
+    var firstInputElement = document.getElementById("firstInput");
+    var secondInputElement = document.getElementById("secondInput");
 
+    buttonElement.addEventListener("click", function () {
+      firstInputElement.focus();
+      setTimeout(function () {
+        firstInputElement.select();
+        firstInputElement.addEventListener("blur", function () {
+          setTimeout(function () {
+            secondInputElement.focus();
+            setTimeout(function () {
+              secondInputElement.select();
+            }, 100);
+          }, 100);
+        });
+      }, 100);
+    });
+  </script>
 </body>
 
 </html>
-<script>
-  var buttonElement = document.getElementById("myButton");
-  var inputElement = document.getElementById("myInput");
-
-  var firstInputElement = document.getElementById("firstInput");
-  var secondInputElement = document.getElementById("secondInput");
-
-  firstInputElement.addEventListener("focusout", function () {
-    secondInputElement.focus();
-    secondInputElement.click();
-  });
-
-</script>
