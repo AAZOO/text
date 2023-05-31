@@ -22,8 +22,8 @@
       firstInputElement.focus();
       firstInputElement.click();
     });
-    buttonElement.addEventListener("focusout", function () {
-      secondInputElement.setAttribute('autofocus', 'autofocus');
+    firstInputElement.addEventListener("focusout", function () {
+      secondInputElement.setAttribute('autofocus', '');
       secondInputElement.focus();
       secondInputElement.click();
     });
